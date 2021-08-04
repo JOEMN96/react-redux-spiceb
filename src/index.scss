@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  outline: transparent;
+}
+
+
+
+.container {
+  max-width: 400px;
+  margin: 10% auto;
+}
+
+/*  TaskHead */
+
+.taskHead {
+  padding: 6px 8px;
+  border: 1px solid #dddd;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  background: #F9F9FA;
+  svg {
+    cursor: pointer;
+  }
+}
+
+// Add Task
+
+.addTask {
+  border: 1px solid #dddd;
+  border-top:0 ;
+  background: #EDF7FC;
+  color: black;
+  padding: 10px;
+  input[type="text"] {
+    border: 1px solid blue;
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #dddd;
+    border-radius: 2px;
+  }
+  p {
+    padding: 5px 0;
+    font-size: 15px;
+  }
+  .split {
+    padding-top:10px ;
+    display: flex;
+    justify-content: space-between;
+    input {
+      width: 100%;
+      border: 1px solid #dddd;
+      padding: 4px;
+    }
+    & > div:last-child {
+      width: 50%;
+    }
+    .date {
+      padding: 6px;
+    }
+  }
+  .assignUser {
+    padding-top: 10px;
+  }
+  .actionArea {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 0;
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+      border: 1px solid transparent;
+      font-weight: 500;
+      cursor: pointer;
+     
+      &:first-child {
+        background: transparent;
+        color: gray;
+      }
+
+      &:last-child {
+        background-color:#47BB7F ;
+        color: white;
+        border-radius: 4px;
+      }
+
+    }
+  }
+  select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #dddd;
+  }
+}
+
+
+// Single Task
+
+.task {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: 1px solid #dddd;
+  padding: 10px;
+  .icons {
+    margin-left: auto;
+    svg {
+      &:first-child {
+        margin-right: 4px;
+      }
+      border-radius: 2px;
+      padding: 4px;
+      border: 1px solid #dddd;
+    }
+  }
+  .text {
+    margin-left: 10px;
+    p {
+      font-size: 13px;
+    }
+  }
+
+  & > svg {
+    padding: 4px;
+    border-radius: 2px;
+    border: 1px solid #dddd;
+  }
+}

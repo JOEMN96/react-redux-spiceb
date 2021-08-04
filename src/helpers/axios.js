@@ -1,0 +1,11 @@
+import axios from "axios";
+const instance = axios.create({
+  timeout: 1000,
+  headers: {
+    Authorization:
+      "Bearer " +
+      "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MjgwOTc3NzMsIm5iZiI6MTYyODA5Nzc3MywianRpIjoiZGJjYmZiMjUtYWE3Zi00N2FlLWJmMWUtOTFhOTc0NTJjM2FkIiwiaWRlbnRpdHkiOnsibmFtZSI6Ik1haGkgTVNEIENTSyBDYXB0YWluIiwiZW1haWwiOiJnb29kQHRlc3QzLmNvbSIsInVzZXJfaWQiOiJ1c2VyXzQxYzFkNDg1NjRhODQzNWQ4MTU2NDM5OTZkOWEzODhmIiwiaWNvbiI6Imh0dHA6Ly93d3cuZ3JhdmF0YXIuY29tL2F2YXRhci9mZDE3ZDIwNjUwYzk5NTk0YWVmNmQxMjVhMjU5ODdlYT9kZWZhdWx0PWh0dHBzJTNBJTJGJTJGczMuc2xvb3ZpLmNvbSUyRmF2YXRhci1kZWZhdWx0LWljb24ucG5nIiwiYnlfZGVmYXVsdCI6Im91dHJlYWNoIn0sImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.KJNopq95qF3JWzwCJAusYdpU0VMvS8KcmAqtTqUrZ-k",
+  },
+});
+
+export default instance;
