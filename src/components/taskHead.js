@@ -1,4 +1,3 @@
-import axios from "../helpers/axios";
 import { useEffect } from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";

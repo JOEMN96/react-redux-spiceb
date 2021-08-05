@@ -18,7 +18,7 @@ function AddedTask({ task }) {
     <div className="task">
       <AiOutlineUser size={38} />
       <div className="text">
-        <p className={done && "overline"}>{task_msg}</p>
+        <p className={done ? "overline" : "none"}>{task_msg}</p>
         <p className="date">{task_date}</p>
       </div>
       <div className="icons">
