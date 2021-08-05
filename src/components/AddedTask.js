@@ -1,20 +1,33 @@
+import { useState } from "react";
 import { AiOutlineUser } from "react-icons/ai";
 import { MdModeEdit } from "react-icons/md";
 import { MdNotificationsPaused } from "react-icons/md";
 import { MdDone } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { updateATask } from "../actions/taskaction";
 
-function AddedTask() {
+function AddedTask({ task }) {
+  const { task_date, task_msg } = task;
+  const dispatch = useDispatch();
+  const [done, setdone] = useState(false);
+  const handleDone = () => {
+    setdone(!done);
+  };
+
   return (
     <div className="task">
       <AiOutlineUser size={38} />
       <div className="text">
-        <p>TaskName</p>
-        <p className="date">2/2/2020</p>
+        <p className={done && "overline"}>{task_msg}</p>
+        <p className="date">{task_date}</p>
       </div>
       <div className="icons">
-        <MdModeEdit size={30} />
+        <MdModeEdit
+          onClick={() => dispatch(updateATask(task, null))}
+          size={30}
+        />
         <MdNotificationsPaused size={30} />
-        <MdDone size={30} />
+        <MdDone size={30} onClick={() => handleDone()} />
       </div>
     </div>
   );

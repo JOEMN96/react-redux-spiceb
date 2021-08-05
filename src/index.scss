@@ -69,8 +69,14 @@
   }
   .actionArea {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding: 20px 0;
+    .del {
+      font-size: 26px;
+      color: gray;
+      cursor: pointer;
+    }
     button {
       padding: 5px 10px;
       margin: 5px;
@@ -110,6 +116,7 @@
   .icons {
     margin-left: auto;
     svg {
+      cursor: pointer;
       &:first-child {
         margin-right: 4px;
       }
@@ -130,4 +137,9 @@
     border-radius: 2px;
     border: 1px solid #dddd;
   }
+}
+
+.overline {
+  text-decoration: line-through;
+  transition: all 1s ease;
 }

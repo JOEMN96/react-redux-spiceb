@@ -4,15 +4,18 @@ import TaskHead from "./components/taskHead";
 import { useSelector } from "react-redux";
 
 function App() {
-  const { addNewTask } = useSelector((state) => state);
-  console.log(addNewTask);
+  const { addNewTask, error } = useSelector((state) => state);
   return (
     <div className="App">
-      <div className="container">
-        <TaskHead />
-        {addNewTask ? <AddTask /> : ""}
-        <AddedTaskWrapper />
-      </div>
+      {error ? (
+        <h1>Error</h1>
+      ) : (
+        <div className="container">
+          <TaskHead />
+          {addNewTask ? <AddTask /> : ""}
+          <AddedTaskWrapper />
+        </div>
+      )}
     </div>
   );
 }
