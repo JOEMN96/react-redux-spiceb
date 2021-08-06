@@ -13,7 +13,6 @@ function AddedTask({ task }) {
   const handleDone = () => {
     setdone(!done);
   };
-
   return (
     <div className="task">
       <AiOutlineUser size={38} />

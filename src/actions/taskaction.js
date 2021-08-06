@@ -75,10 +75,17 @@ const getAllTasks = () => {
         throw new Error("Something went Wrong");
       }
 
-      dispatch({
-        type: "ALLTASKS",
-        payload: data.results,
-      });
+      if (data.results.length > 0) {
+        dispatch({
+          type: "ALLTASKS",
+          payload: data.results,
+        });
+      } else {
+        dispatch({
+          type: "ALLTASKS",
+          payload: null,
+        });
+      }
     } catch (error) {
       dispatch({
         type: "ERROR",
@@ -117,9 +124,7 @@ const updateATask = (data, apiOrOpenTab) => {
           type: "UPDATE",
           payload: { ...data, addNewTask: false },
         });
-        dispatch({
-          type: "POSTERROR",
-        });
+        dispatch(getAllTasks());
       } else {
         dispatch({
           type: "POSTERROR",

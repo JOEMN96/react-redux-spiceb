@@ -8,9 +8,14 @@ function AddedTaskWrapper() {
   useEffect(() => {
     dispatch(getAllTasks());
   }, []);
-  let { tasks } = useSelector((state) => state);
-  if (!tasks) {
-    tasks = [];
+  let { tasks, addNewTask } = useSelector((state) => state);
+
+  if (tasks == null && addNewTask == true) {
+    return <></>;
+  }
+
+  if (tasks == null) {
+    return <p className="Notask">Currently there is no tasks ! Please add !</p>;
   }
 
   return (

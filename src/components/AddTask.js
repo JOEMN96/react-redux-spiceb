@@ -15,28 +15,28 @@ const initialState = {
 function AddTask() {
   let { dropDownData, postError, updateData } = useSelector((state) => state);
   const [formData, setFormData] = useState(initialState);
+
   useEffect(() => {
     if (updateData) {
       setFormData({ ...updateData });
     } else {
       setFormData(initialState);
     }
+    return () => {
+      dispatch({ type: "NOERROR" });
+    };
   }, [updateData]);
+
   const [Sucess, setSucess] = useState(false);
-  console.log(postError);
   const dispatch = useDispatch();
 
   const timeChange = (e) => {
-    console.log(e.target.value);
     let arr = e.target.value.split(":");
     const seconds = arr[0] * 60 * 60 + arr[1] * 60;
     setFormData({ ...formData, task_time: seconds });
   };
 
   const dateChange = (e) => {
-    // const date = moment().format("yyyy-MM-DD", e.target.value);
-    // console.log(date, "From Moment");
-    // console.log(e.target.value);
     setFormData({ ...formData, task_date: e.target.value });
   };
 
@@ -63,7 +63,6 @@ function AddTask() {
     setSucess(false);
     dispatch(AddTaskAction(formData));
   };
-
   return (
     <div className="addTask">
       <div>
@@ -80,7 +79,7 @@ function AddTask() {
             <p>Date</p>
             <input
               type="date"
-              value={setFormData.task_date}
+              value={formData.task_date}
               onChange={dateChange}
               name=""
               id=""
@@ -93,8 +92,12 @@ function AddTask() {
         </div>
         <div className="assignUser">
           <p>Assign User</p>
-          <select onChange={handleDropDownChange} name="">
-            <option>Select</option>
+          <select
+            defaultValue={updateData ? updateData.user_id : "select"}
+            onChange={handleDropDownChange}
+            name=""
+          >
+            <option value="select">Select</option>
             {dropDownData.length > 0 &&
               dropDownData.map((item, index) => (
                 <option key={index} value={item.user_id}>
