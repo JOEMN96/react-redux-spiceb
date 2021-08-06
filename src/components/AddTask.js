@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { AddTaskAction, deleteTask, updateATask } from "../actions/taskaction";
 import { useSelector, useDispatch } from "react-redux";
 import { AiFillDelete } from "react-icons/ai";
+import gif from "../assets/Moving train.gif";
 
 const initialState = {
   task_time: "",
@@ -13,7 +14,9 @@ const initialState = {
   task_msg: "",
 };
 function AddTask() {
-  let { dropDownData, postError, updateData } = useSelector((state) => state);
+  let { dropDownData, postError, updateData, loading } = useSelector(
+    (state) => state
+  );
   const [formData, setFormData] = useState(initialState);
 
   useEffect(() => {
@@ -60,9 +63,9 @@ function AddTask() {
       dispatch(updateATask(formData, true));
       return;
     }
-    setSucess(false);
     dispatch(AddTaskAction(formData));
   };
+  console.log(loading);
   return (
     <div className="addTask">
       <div>
@@ -122,13 +125,14 @@ function AddTask() {
               />
             )}
           </div>
+          {loading && <img src={gif} alt="" />}
           <div>
             <button
               onClick={() => dispatch({ type: "ADDNEWTASK", payload: false })}
             >
               Cancel
             </button>
-            <button type="submit" onClick={handleSave}>
+            <button type="submit" disabled={loading} onClick={handleSave}>
               Save
             </button>
           </div>

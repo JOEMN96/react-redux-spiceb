@@ -148,3 +148,7 @@
   text-align: center;
     padding: 40px 0;
 }
+
+button[type="submit"]:disabled {
+  cursor: not-allowed;
+}

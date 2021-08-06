@@ -3,15 +3,18 @@ let initialState = {
   dropDownData: [],
   error: false,
   tasks: [],
+  loading: false,
 };
 
 const reducer = (state = initialState, action) => {
+  console.log(action.type);
   switch (action.type) {
     case "ADDNEWTASK":
       return {
         ...state,
         addNewTask: action.payload,
         updateData: null,
+        loading: false,
       };
 
     case "POPULATEDROPDOWN":
@@ -21,10 +24,10 @@ const reducer = (state = initialState, action) => {
       };
 
     case "ADDTASKANDCLOSE":
-      return { ...state, addNewTask: action.payload.Close };
+      return { ...state, addNewTask: action.payload.Close, loading: false };
 
     case "POSTERROR":
-      return { ...state, postError: true };
+      return { ...state, postError: true, loading: false };
 
     case "NOERROR":
       return { ...state, postError: false };
@@ -40,6 +43,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         updateData: action.payload,
         addNewTask: action.payload.addNewTask,
+        loading: false,
+      };
+    case "LOADING":
+      return {
+        ...state,
+        loading: true,
       };
 
     default:

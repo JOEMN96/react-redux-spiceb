@@ -2,6 +2,9 @@ import axios from "../helpers/axios";
 
 const AddTaskAction = (formData) => {
   return async (dispatch) => {
+    dispatch({
+      type: "LOADING",
+    });
     const {
       task_time,
       task_date,
@@ -25,6 +28,7 @@ const AddTaskAction = (formData) => {
           task_msg,
         }
       );
+
       const status = res.data.code;
       if (status === 201) {
         dispatch({
@@ -96,6 +100,9 @@ const getAllTasks = () => {
 
 const updateATask = (data, apiOrOpenTab) => {
   return async (dispatch) => {
+    dispatch({
+      type: "LOADING",
+    });
     if (apiOrOpenTab) {
       const {
         task_time,
@@ -115,10 +122,8 @@ const updateATask = (data, apiOrOpenTab) => {
           is_completed,
           assigned_user,
           task_msg,
-        },
-        { timeout: 10000 }
+        }
       );
-      console.log(res);
       if (res.status === 200) {
         dispatch({
           type: "UPDATE",
@@ -141,14 +146,20 @@ const updateATask = (data, apiOrOpenTab) => {
 
 const deleteTask = (task) => {
   return async (dispatch) => {
+    dispatch({
+      type: "LOADING",
+    });
     const res = await axios.delete(
       `https://stage.api.sloovi.com/task/lead_c1de2c7b9ab94cb9abad131b7294cd8b/${task.id}?company_id=company_0336d06ff0ec4b3b9306ddc288482663`
     );
     if (res.status === 200) {
       dispatch(getAllTasks());
       dispatch({ type: "ADDNEWTASK", payload: false });
+    } else {
+      dispatch({
+        type: "POSTERROR",
+      });
     }
-    console.log(res);
   };
 };
 
