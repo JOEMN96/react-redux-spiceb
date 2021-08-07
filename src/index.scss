@@ -11,8 +11,9 @@
 
 
 .container {
-  max-width: 400px;
-  margin: 10% auto;
+  max-width: 800px;
+  margin: 40% auto;
+  margin-left: 20px;
 }
 
 /*  TaskHead */
@@ -62,6 +63,7 @@
     }
     .date {
       padding: 6px;
+      color: #B8585D;
     }
   }
   .assignUser {
@@ -151,4 +153,24 @@
 
 button[type="submit"]:disabled {
   cursor: not-allowed;
+}
+
+#root {
+  display: flex;
+  align-items: end;
+  height: 200vh;
+}
+
+.App {
+  width: 400px;
+}
+
+.left {
+  width: 200px;
+  height: 100%;
+  background: #323E4D;
+}
+
+.date {
+      color: #f15860;
 }

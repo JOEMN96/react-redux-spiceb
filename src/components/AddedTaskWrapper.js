@@ -9,7 +9,6 @@ function AddedTaskWrapper() {
     dispatch(getAllTasks());
   }, []);
   let { tasks, addNewTask } = useSelector((state) => state);
-  console.log(tasks);
   if (tasks === null && addNewTask === true) {
     return <></>;
   }

@@ -65,7 +65,7 @@ function AddTask() {
     }
     dispatch(AddTaskAction(formData));
   };
-  console.log(loading);
+
   return (
     <div className="addTask">
       <div>
@@ -90,7 +90,14 @@ function AddTask() {
           </div>
           <div>
             <p>Time</p>
-            <input type="time" onChange={timeChange} id="" />
+            <input
+              type="time"
+              value={new Date(formData.task_time * 1000)
+                .toISOString()
+                .substr(11, 8)}
+              onChange={timeChange}
+              id=""
+            />
           </div>
         </div>
         <div className="assignUser">

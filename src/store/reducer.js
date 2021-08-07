@@ -7,7 +7,6 @@ let initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log(action.type);
   switch (action.type) {
     case "ADDNEWTASK":
       return {
